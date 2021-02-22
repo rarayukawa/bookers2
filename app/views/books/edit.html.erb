@@ -1,0 +1,26 @@
+<h1>Editing Book</h1>
+<div class="row">
+  <div class="col-md-5">
+    <% if @book.errors.any? %>
+            <h3><%= @book.errors.count %>errors prohibited this book from being saved:<br>
+            <ul>
+            <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+            </ul>
+            <% end %>
+    <%= form_for(@book) do |f| %>
+
+      <%= f.label :Title %><br>
+      <%= f.text_field :title %><br>
+
+      <%= f.label :Opinion %><br>
+      <%= f.text_field :body %><br>
+
+
+      <%= f.submit "Update Book", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<p><%= link_to "Show", book_path %>|<%= link_to "Back", books_path %>
